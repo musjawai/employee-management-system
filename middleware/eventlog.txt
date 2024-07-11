@@ -1,2 +1,0 @@
-20240711	13:37:21	1362fc08-5fa8-4d39-b7ba-e3b5eae2203f	GET	undefined	/
-20240711	13:37:21	e45fed5e-2335-4ca9-a535-5c598cfca41c	GET	undefined	/css/style.css
