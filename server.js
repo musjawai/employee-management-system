@@ -1,18 +1,29 @@
-// console.log("Hello World!");
-// // console.log(global);
-
-const os = require("os");
+const express = require("express");
+const app = express();
 const path = require("path");
-const { add, subtract, multiply, divide } = require("./math");
+const PORT = process.env.PORT || 3500;
 
-console.log(add(5, 5));
-console.log(subtract(5, 5));
-console.log(multiply(5, 5));
-console.log(divide(5, 5));
+app.get("^/$|index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
 
-// console.log(os.type());
-// console.log(os.version());
-// console.log(os.homedir());
+app.get("/new-page(.html)?", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "new-page.html"));
+});
 
-// console.log(__dirname);
-// console.log(__filename);
+app.get("/old-page(.html)?", (req, res) => {
+  res.redirect(301, "/new-page.html");
+});
+
+// route handlers
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// myEmitter.on("log", (msg) => logEvents(msg));
+
+//   myEmitter.emit("log", "Log event emitted");
