@@ -1,3 +1,6 @@
 20240711	19:18:58	fef5bfe7-229a-4625-9885-d100c0a30a6f	RangeError: Invalid status code: id
 20240711	19:19:16	618939af-f8be-4c88-af3d-53625bc62227	RangeError: Invalid status code: id
 20240711	19:20:05	e4e0051d-c82f-456c-9f65-8727db87f911	RangeError: Invalid status code: id
+20240715	19:05:13	875c8598-675e-44c1-98d5-75d7850b7857	TypeError: res.json is not a function
+20240715	19:05:48	633791f3-7013-481f-9bad-09ff12506d70	TypeError: res.json is not a function
+20240715	19:08:31	8552d3e6-bcbb-40d5-ba85-4c6db4412e09	TypeError: res.json is not a function
