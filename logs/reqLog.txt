@@ -147,3 +147,12 @@
 20240717	15:02:18	f952d0eb-7764-4c45-974c-80f2ce611683	POST	undefined	/auth
 20240717	15:02:20	2bf283e8-0795-48f3-87fd-f5727c99f0ab	GET	undefined	/refresh
 20240717	15:04:02	6fddfed3-6a53-4577-a93e-b924200d261e	GET	undefined	/refresh
+20240717	16:07:18	36f65cd3-7975-4d78-88db-4cbe3d3c1347	POST	undefined	/auth
+20240717	16:07:29	42429cb9-7c67-4416-8641-403c935283f8	GET	undefined	/refresh
+20240717	16:07:48	9e2153a0-c897-4096-b762-6d920c527933	GET	undefined	/logout
+20240717	16:09:30	da7db24e-39b7-40b8-92e0-9e414d720bea	POST	undefined	/auth
+20240717	16:09:33	a6669cb9-dca9-41ac-83b6-27e26bdc52c5	GET	undefined	/refresh
+20240717	16:09:37	fb8857c2-a0c9-4135-bb35-7f636be2ad10	GET	undefined	/logout
+20240717	16:10:27	fce77e8a-a452-4bb2-899e-8b8325d834b6	GET	undefined	/refresh
+20240717	16:11:10	dfbaa547-0831-4019-be68-76a601aef505	GET	undefined	/refresh
+20240717	16:11:38	fa67e3d0-bdbf-4939-9699-a71abbc01cbf	POST	undefined	/auth
