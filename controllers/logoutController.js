@@ -1,12 +1,4 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require("../model/User");
 
 const handleLogout = async (req, res) => {
   // on client, delete access token
@@ -16,24 +8,16 @@ const handleLogout = async (req, res) => {
   const refreshToken = cookies.jwt;
 
   // Is refreshToken in db
-  const userInDB = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const userInDB = await User.findOne({ refreshToken }).exec;
   if (!userInDB) {
     res.clearCookie("jwt", { httpOnly: true });
     return res.sendStatus(204); // forbidden
   }
 
-  const otherUsers = usersDB.users.filter(
-    (person) => person.refreshToken !== userInDB.refreshToken
-  );
-  const currentUser = { ...userInDB, refreshToken: "" };
-  usersDB.setUsers([...otherUsers, currentUser]);
+  userInDB.refreshToken = "";
+  const result = await userInDB.save();
 
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "model", "users.json"),
-    JSON.stringify(usersDB.users)
-  );
+  console.log(result);
 
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
   res.sendStatus(204);

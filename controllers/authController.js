@@ -1,14 +1,6 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+const User = require("../model/User");
 const bcrypt = require("bcrypt");
-
 const jwt = require("jsonwebtoken");
-const fsPromises = require("fs").promises;
-const path = require("path");
 
 const handleLogin = async (req, res) => {
   const { user, pwd } = req.body;
@@ -16,7 +8,7 @@ const handleLogin = async (req, res) => {
     return res
       .status(400)
       .json({ message: "username and password are requried" });
-  const userInDB = usersDB.users.find((person) => person.username === user);
+  const userInDB = await User.findOne({ username: user });
   if (!userInDB) return res.sendStatus(401);
   const match = await bcrypt.compare(pwd, userInDB.password);
   if (match) {
@@ -33,15 +25,10 @@ const handleLogin = async (req, res) => {
       { expiresIn: "1d" }
     );
     // saving refreshToken to logged in user
-    const otherUsers = usersDB.users.filter(
-      (person) => person.username !== userInDB.username
-    );
-    const currentUser = { ...userInDB, refreshToken };
-    usersDB.setUsers([...otherUsers, currentUser]);
-    await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "users.json"),
-      JSON.stringify(usersDB.users)
-    );
+    userInDB.refreshToken = refreshToken;
+    const result = await userInDB.save();
+    console.log(result);
+
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
       sameSite: "None",
