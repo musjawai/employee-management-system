@@ -6,3 +6,4 @@
 20240715	19:08:31	8552d3e6-bcbb-40d5-ba85-4c6db4412e09	TypeError: res.json is not a function
 20240717	13:49:32	d6ec02fa-ff4c-4b7e-be15-4c5650d49588	TypeError: req.headers is not a function
 20240717	17:19:04	7d34f756-1829-4e9f-be25-c716515b18a3	ReferenceError: whitelist is not defined
+20240718	15:23:43	40f060fc-d211-48e1-8a80-3a87ffc15a61	SyntaxError: Expected ':' after property name in JSON at position 25 (line 1 column 26)
